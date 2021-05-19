@@ -1,0 +1,108 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Assets/PanelStyle.tres" type="StyleBox" id=1]
+[ext_resource path="res://Scripts/SceneControls.cs" type="Script" id=2]
+
+[node name="SceneControls" type="Control"]
+anchor_right = 0.455
+anchor_bottom = 0.054
+margin_right = 0.0800171
+margin_bottom = 7.6
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SceneControlsPanel" type="Panel" parent="."]
+margin_right = 473.0
+margin_bottom = 60.0
+custom_styles/panel = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SceneButtonsContainer" type="HBoxContainer" parent="SceneControlsPanel"]
+margin_left = 15.0
+margin_top = 10.0
+margin_right = 443.0
+margin_bottom = 50.0
+custom_constants/separation = 24
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TechniqueAButton" type="Button" parent="SceneControlsPanel/SceneButtonsContainer"]
+margin_right = 95.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 95, 40 )
+
+[node name="TechniqueALabel" type="Label" parent="SceneControlsPanel/SceneButtonsContainer/TechniqueAButton"]
+margin_right = 95.0
+margin_bottom = 40.0
+text = "Technique 1
+Fixed Object"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TechniqueBButton" type="Button" parent="SceneControlsPanel/SceneButtonsContainer"]
+margin_left = 119.0
+margin_right = 214.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 95, 40 )
+
+[node name="TechniqueBLabel" type="Label" parent="SceneControlsPanel/SceneButtonsContainer/TechniqueBButton"]
+margin_right = 95.0
+margin_bottom = 40.0
+text = "Technique 2
+Free Object"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TechniqueCButton" type="Button" parent="SceneControlsPanel/SceneButtonsContainer"]
+margin_left = 238.0
+margin_right = 333.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 95, 40 )
+
+[node name="TechniqueBLabel2" type="Label" parent="SceneControlsPanel/SceneButtonsContainer/TechniqueCButton"]
+margin_right = 95.0
+margin_bottom = 40.0
+text = "Technique 3
+Glass Box"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ProjectionsButton" type="Button" parent="SceneControlsPanel/SceneButtonsContainer"]
+margin_left = 357.0
+margin_right = 441.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 84, 40 )
+toggle_mode = true
+
+[node name="ProjectionsLabel" type="Label" parent="SceneControlsPanel/SceneButtonsContainer/ProjectionsButton"]
+margin_right = 84.0
+margin_bottom = 40.0
+text = "Freeform
+Projections"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="button_down" from="SceneControlsPanel/SceneButtonsContainer/TechniqueAButton" to="." method="_on_TechniqueAButton_button_down"]
+[connection signal="button_down" from="SceneControlsPanel/SceneButtonsContainer/TechniqueBButton" to="." method="_on_TechniqueBButton_button_down"]
+[connection signal="button_down" from="SceneControlsPanel/SceneButtonsContainer/TechniqueCButton" to="." method="_on_TechniqueCButton_button_down"]
+[connection signal="button_down" from="SceneControlsPanel/SceneButtonsContainer/ProjectionsButton" to="." method="_on_ProjectionsButton_button_down"]

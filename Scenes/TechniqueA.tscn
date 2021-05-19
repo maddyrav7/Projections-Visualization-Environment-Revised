@@ -1,0 +1,141 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Assets/TechniqueAObject.obj" type="ArrayMesh" id=1]
+[ext_resource path="res://Assets/ObjectMaterial.tres" type="Material" id=3]
+[ext_resource path="res://Scenes/SceneControls.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/CameraControlsText.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/PanelStyle.tres" type="StyleBox" id=6]
+[ext_resource path="res://Scripts/InstructionsPopup.cs" type="Script" id=7]
+[ext_resource path="res://Scripts/CameraRoot.cs" type="Script" id=8]
+
+[node name="TechniqueA" type="Node"]
+
+[node name="ViewportContainer" type="ViewportContainer" parent="."]
+margin_right = 1366.0
+margin_bottom = 705.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Viewport" type="Viewport" parent="ViewportContainer"]
+size = Vector2( 1366, 705 )
+handle_input_locally = false
+render_target_update_mode = 3
+
+[node name="ObjectRoot" type="Spatial" parent="ViewportContainer/Viewport"]
+
+[node name="DirectionalLight" type="DirectionalLight" parent="ViewportContainer/Viewport/ObjectRoot"]
+transform = Transform( 0.707107, -0.379928, 0.596368, 0, 0.843391, 0.5373, -0.707107, -0.379928, 0.596368, 15, 15, 15 )
+light_energy = 0.8
+light_indirect_energy = 0.8
+
+[node name="ObjectMesh" type="MeshInstance" parent="ViewportContainer/Viewport/ObjectRoot"]
+mesh = ExtResource( 1 )
+material/0 = ExtResource( 3 )
+
+[node name="CameraRoot" type="Spatial" parent="ViewportContainer/Viewport/ObjectRoot"]
+script = ExtResource( 8 )
+
+[node name="UserCamera" type="Camera" parent="ViewportContainer/Viewport/ObjectRoot/CameraRoot"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4 )
+projection = 1
+current = true
+size = 4.0
+
+[node name="SceneControls" parent="ViewportContainer/Viewport" instance=ExtResource( 4 )]
+margin_top = 645.0
+margin_right = -155.53
+margin_bottom = 646.93
+
+[node name="CameraControlsText" parent="ViewportContainer/Viewport" instance=ExtResource( 5 )]
+margin_left = 1165.0
+margin_top = 565.0
+margin_right = 1165.0
+margin_bottom = 565.0
+
+[node name="InstructionsPopup" type="PopupDialog" parent="ViewportContainer/Viewport"]
+margin_right = 500.0
+margin_bottom = 200.0
+custom_styles/panel = ExtResource( 6 )
+popup_exclusive = true
+script = ExtResource( 7 )
+
+[node name="InstructionsLabel" type="Label" parent="ViewportContainer/Viewport/InstructionsPopup"]
+margin_left = 15.0
+margin_top = 15.0
+margin_right = 485.0
+margin_bottom = 85.0
+text = "Technique 1: Object Stationary, Viewpoint Moves
+
+For this visualization technique, the object is STATIONARY and the USER VIEWPOINT (i.e., your eyes) move to different locations (using the arrow keys).
+
+As you move around, imagine the projections of each feature of the object to visualize its six principal orthographic views.
+
+Movement controls can be found on the bottom right."
+autowrap = true
+
+[node name="PopupCloseButton" type="Button" parent="ViewportContainer/Viewport/InstructionsPopup"]
+margin_left = 430.0
+margin_top = 170.0
+margin_right = 474.0
+margin_bottom = 190.0
+text = "Okay"
+
+[node name="WelcomePopup" type="PopupDialog" parent="ViewportContainer/Viewport"]
+margin_right = 500.0
+margin_bottom = 175.0
+custom_styles/panel = ExtResource( 6 )
+popup_exclusive = true
+script = ExtResource( 7 )
+onlyOnce = true
+
+[node name="InstructionsLabel" type="Label" parent="ViewportContainer/Viewport/WelcomePopup"]
+margin_left = 15.0
+margin_top = 15.0
+margin_right = 485.0
+margin_bottom = 85.0
+text = "Welcome to the Orthographic Visualization Aid.
+
+This will help you learn the visualization techiniques taught in EGAD (ref. course notes Lesson 2), and improve your ability to conceptualize three dimensional shapes without having physical objects.
+
+There are four exercise choices on the lower left. Each uses a different projection technique."
+autowrap = true
+
+[node name="PopupCloseButton" type="Button" parent="ViewportContainer/Viewport/WelcomePopup"]
+margin_left = 430.0
+margin_top = 145.0
+margin_right = 474.0
+margin_bottom = 165.0
+text = "Okay"
+
+[node name="TechniquePanel" type="Panel" parent="ViewportContainer/Viewport"]
+margin_left = 533.0
+margin_top = 60.0
+margin_right = 733.0
+margin_bottom = 100.0
+rect_scale = Vector2( 1.5, 1.5 )
+custom_styles/panel = ExtResource( 6 )
+
+[node name="TechniqueLabel" type="Label" parent="ViewportContainer/Viewport/TechniquePanel"]
+margin_left = 15.0
+margin_top = 15.0
+margin_right = 93.0
+margin_bottom = 29.0
+text = "Technique 1: Fixed Object"
+
+[node name="TitlePanel" type="Panel" parent="ViewportContainer/Viewport"]
+margin_left = 524.0
+margin_right = 736.0
+margin_bottom = 40.0
+rect_scale = Vector2( 1.5, 1.5 )
+custom_styles/panel = ExtResource( 6 )
+
+[node name="TitleLabel" type="Label" parent="ViewportContainer/Viewport/TitlePanel"]
+margin_top = 15.0
+margin_right = 216.0
+margin_bottom = 46.0
+text = "Orthographic Visualization Aid
+M. Ravishankar, April 2021"
+align = 1
+[connection signal="button_down" from="ViewportContainer/Viewport/InstructionsPopup/PopupCloseButton" to="ViewportContainer/Viewport/InstructionsPopup" method="_on_PopupCloseButton_button_down"]
+[connection signal="button_down" from="ViewportContainer/Viewport/WelcomePopup/PopupCloseButton" to="ViewportContainer/Viewport/WelcomePopup" method="_on_PopupCloseButton_button_down"]

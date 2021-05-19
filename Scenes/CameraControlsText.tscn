@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/CameraControlsText.cs" type="Script" id=1]
+[ext_resource path="res://Assets/PanelStyle.tres" type="StyleBox" id=2]
+
+[node name="CameraControlsText" type="Control"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ControlsPanel" type="Panel" parent="."]
+margin_right = 201.0
+margin_bottom = 95.0
+custom_styles/panel = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CameraControlsLabel" type="Label" parent="ControlsPanel"]
+margin_left = 15.0
+margin_top = 15.0
+margin_right = 186.0
+margin_bottom = 80.0
+text = "Controls
+Arrow Keys - Move Camera
+R - Reset Camera
+Esc - Quit Program"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ShowExplanationButton" type="Button" parent="."]
+margin_left = 22.0
+margin_top = 100.0
+margin_right = 186.0
+margin_bottom = 120.0
+text = "Show/Hide Controls List"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="button_down" from="ShowExplanationButton" to="." method="_on_ShowExplanationButton_button_down"]

@@ -1,0 +1,190 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Assets/ObjectMaterial.tres" type="Material" id=1]
+[ext_resource path="res://Scenes/BoxPlaneControl.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scripts/TechniqueC.cs" type="Script" id=5]
+[ext_resource path="res://Assets/TechniqueCObject.obj" type="ArrayMesh" id=6]
+[ext_resource path="res://Scenes/SceneControls.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/CameraControlsText.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Assets/PanelStyle.tres" type="StyleBox" id=9]
+[ext_resource path="res://Scripts/InstructionsPopup.cs" type="Script" id=10]
+[ext_resource path="res://Scenes/CameraRoot.tscn" type="PackedScene" id=11]
+
+[sub_resource type="ConcavePolygonShape" id=1]
+margin = 0.001
+data = PoolVector3Array( -0.5, -0.5, 0.5, -0.5, -0.5, 0, -0.5, 0.5, 0, -0.5, -0.5, 0.5, -0.5, 0.5, 0, -0.5, -0.17, 0.5, -0.5, -0.5, 0.5, -0.5, -0.17, 0.5, 0, -0.17, 0.5, -0.5, -0.5, 0.5, 0, -0.17, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, 0.5, 0, -0.17, 0.5, 0, 0, 0.5, 0.5, -0.5, 0.5, 0, 0, 0.5, 0.5, 0, 0.5, 0, 0, 0.3731, 0, 0.5, 0, 0, 0, 0, 0.5, -0.5, -0.5, 0.5, 0, -0.5, 0, 0, -0.5, 0.5, -0.5, -0.5, 0, 0, -0.5, 0, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0, 0.5, 0.5, 0, -0.5, 0.5, -0.5, 0.5, 0.5, 0, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0, -0.5, -0.5, 0, -0.5, 0, 0.5, -0.5, -0.5, 0, -0.5, 0, 0.5, -0.5, 0.5, 0.5, -0.5, 0.5, 0, -0.5, 0, -0.5, -0.5, 0, 0.5, -0.5, 0.5, -0.5, -0.5, 0, -0.5, -0.5, 0.5, 0, 0, -0.5, 0.5, 0, -0.5, 0, 0, 0, 0, 0, 0, 0.5, 0, -0.5, 0.5, 0, 0.5, 0, 0, 0, 0.5, 0, 0.5, 0, 0, 0.3731, 0, 0, 0.3731, 0.5, 0, 0.5, 0, 0, 0.5, 0, -0.5, 0, 0, -0.5, -0.5, 0, 0, -0.5, 0, -0.5, 0, 0, 0, -0.5, 0, 0, 0, 0, 0.5, 0, -0.5, 0.5, 0, -0.5, -0.5, 0, 0, 0.5, 0, -0.5, -0.5, 0, 0, 0, 0, 0, 0, 0, -0.5, -0.5, 0, 0, -0.5, 0, 0, -0.17, 0.5, 0, 0, 0.3731, 0, 0, 0.5, -0.5, 0.5, 0, 0, 0.5, 0, 0, 0, 0.3731, -0.5, 0.5, 0, 0, 0, 0.3731, -0.5, -0.17, 0.5, -0.5, -0.17, 0.5, 0, 0, 0.3731, 0, -0.17, 0.5 )
+
+[node name="TechniqueC" type="Node"]
+script = ExtResource( 5 )
+
+[node name="ViewportContainer" type="ViewportContainer" parent="."]
+margin_right = 1366.0
+margin_bottom = 705.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Viewport" type="Viewport" parent="ViewportContainer"]
+size = Vector2( 1366, 705 )
+handle_input_locally = false
+render_target_update_mode = 3
+
+[node name="ObjectRoot" type="Spatial" parent="ViewportContainer/Viewport"]
+
+[node name="DirectionalLight" type="DirectionalLight" parent="ViewportContainer/Viewport/ObjectRoot"]
+transform = Transform( -0.707107, -0.407599, 0.577809, 0, 0.817145, 0.576432, -0.707107, 0.407599, -0.577809, -6, 6, 6 )
+light_energy = 0.75
+
+[node name="DirectionalLight2" type="DirectionalLight" parent="ViewportContainer/Viewport/ObjectRoot"]
+transform = Transform( 0.707107, -0.407599, -0.577809, 0, 0.817145, -0.576432, 0.707107, 0.407599, 0.577809, 6, -6, -6 )
+light_energy = 0.75
+
+[node name="CameraRoot" parent="ViewportContainer/Viewport/ObjectRoot" instance=ExtResource( 11 )]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 0, 0, 0 )
+
+[node name="OrthoCameraRoot" type="Spatial" parent="ViewportContainer/Viewport/ObjectRoot"]
+
+[node name="OrthoCamera" type="Camera" parent="ViewportContainer/Viewport/ObjectRoot/OrthoCameraRoot"]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 3, 0, 0 )
+projection = 1
+size = 2.5
+
+[node name="Object1" type="StaticBody" parent="ViewportContainer/Viewport/ObjectRoot"]
+
+[node name="ObjectMesh" type="MeshInstance" parent="ViewportContainer/Viewport/ObjectRoot/Object1"]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 0, 0, 0 )
+mesh = ExtResource( 6 )
+material/0 = ExtResource( 1 )
+
+[node name="ObjectCollision" type="CollisionShape" parent="ViewportContainer/Viewport/ObjectRoot/Object1"]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 0, 0, 0 )
+shape = SubResource( 1 )
+
+[node name="FrontPlaneControl" parent="ViewportContainer/Viewport/ObjectRoot" instance=ExtResource( 3 )]
+
+[node name="RightPlaneControl" parent="ViewportContainer/Viewport/ObjectRoot" instance=ExtResource( 3 )]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 0, 0, 0 )
+
+[node name="BackPlaneControl" parent="ViewportContainer/Viewport/ObjectRoot" instance=ExtResource( 3 )]
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, 0, 0 )
+
+[node name="LeftPlaneControl" parent="ViewportContainer/Viewport/ObjectRoot" instance=ExtResource( 3 )]
+transform = Transform( 1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 0, 0, 0 )
+
+[node name="TopPlaneControl" parent="ViewportContainer/Viewport/ObjectRoot" instance=ExtResource( 3 )]
+transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, 0, 0, 0 )
+
+[node name="BottomPlaneControl" parent="ViewportContainer/Viewport/ObjectRoot" instance=ExtResource( 3 )]
+transform = Transform( 1.19249e-08, 1, 0, -1, 1.19249e-08, 0, 0, 0, 1, 0, 0, 0 )
+
+[node name="HiddenLineRay" type="RayCast" parent="ViewportContainer/Viewport/ObjectRoot"]
+
+[node name="SceneControls" parent="ViewportContainer/Viewport" instance=ExtResource( 7 )]
+margin_top = 645.0
+margin_right = -155.53
+margin_bottom = 646.93
+
+[node name="CameraControlsText" parent="ViewportContainer/Viewport" instance=ExtResource( 8 )]
+margin_left = 1165.0
+margin_top = 565.0
+margin_right = 1165.0
+margin_bottom = 565.0
+
+[node name="ViewControl" type="Control" parent="ViewportContainer/Viewport"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="ViewControlPanel" type="Panel" parent="ViewportContainer/Viewport/ViewControl"]
+margin_right = 195.0
+margin_bottom = 80.0
+custom_styles/panel = ExtResource( 9 )
+
+[node name="ViewSelectLabel" type="Label" parent="ViewportContainer/Viewport/ViewControl/ViewControlPanel"]
+margin_left = 15.0
+margin_top = 18.0
+margin_right = 55.0
+margin_bottom = 32.0
+text = "View"
+uppercase = true
+
+[node name="OrthoViewSelectList" type="OptionButton" parent="ViewportContainer/Viewport/ViewControl/ViewControlPanel"]
+margin_left = 65.0
+margin_top = 15.0
+margin_right = 174.0
+margin_bottom = 35.0
+text = "Free Camera"
+items = [ "Free Camera", null, false, 0, null, "Front View", null, false, 1, null, "Right View", null, false, 2, null, "Back View", null, false, 3, null, "Left View", null, false, 4, null, "Top View", null, false, 5, null, "Bottom View", null, false, 6, null ]
+selected = 0
+
+[node name="ColoursSlider" type="CheckButton" parent="ViewportContainer/Viewport/ViewControl/ViewControlPanel"]
+margin_left = 10.0
+margin_top = 40.0
+margin_right = 196.0
+margin_bottom = 80.0
+text = "HIGH CONTRAST"
+
+[node name="InstructionsPopup" type="PopupDialog" parent="ViewportContainer/Viewport"]
+margin_right = 650.0
+margin_bottom = 290.0
+custom_styles/panel = ExtResource( 9 )
+popup_exclusive = true
+script = ExtResource( 10 )
+
+[node name="InstructionsLabel" type="Label" parent="ViewportContainer/Viewport/InstructionsPopup"]
+margin_left = 15.0
+margin_top = 15.0
+margin_right = 635.0
+margin_bottom = 165.0
+text = "Technique 3: Placing the Object in a Glass Box
+
+The camera views the box from different viewpoints (using the arrow keys).
+
+Orthographic views are projected onto/removed from the faces of the box by pressing the corresponding box number (found at the top right). Use the numbers along the top of the keyboard, NOT the keypad, e.g., the 1 key (top of the keyboard) will project the Front View to the front face of the box.
+
+Before you do, imagine the features of the object projecting onto each face of the box to create the principal views. The faces of the box are in between the your eye and the object. This is a simulation of third angle projection.
+
+Once you have all six principal views, imagine “unfolding” the glass box to create a drawing layout."
+autowrap = true
+
+[node name="PopupCloseButton" type="Button" parent="ViewportContainer/Viewport/InstructionsPopup"]
+margin_left = 580.0
+margin_top = 260.0
+margin_right = 624.0
+margin_bottom = 280.0
+text = "Okay"
+
+[node name="RevealControlsPanel" type="Panel" parent="ViewportContainer/Viewport"]
+margin_left = 1165.0
+margin_right = 1366.0
+margin_bottom = 140.0
+custom_styles/panel = ExtResource( 9 )
+
+[node name="RevealControlsLabel" type="Label" parent="ViewportContainer/Viewport/RevealControlsPanel"]
+margin_top = 15.0
+margin_right = 201.0
+margin_bottom = 29.0
+text = "Controls For Toggling Faces
+1 - Front
+2 - Right
+3 - Back
+4 - Left
+5 - Top
+6 - Bottom"
+align = 1
+
+[node name="TechniquePanel" type="Panel" parent="ViewportContainer/Viewport"]
+margin_left = 548.0
+margin_right = 728.0
+margin_bottom = 40.0
+rect_scale = Vector2( 1.5, 1.5 )
+custom_styles/panel = ExtResource( 9 )
+
+[node name="TechniqueLabel" type="Label" parent="ViewportContainer/Viewport/TechniquePanel"]
+margin_left = 15.0
+margin_top = 15.0
+margin_right = 93.0
+margin_bottom = 29.0
+text = "Technique 3: Glass Box"
+[connection signal="item_selected" from="ViewportContainer/Viewport/ViewControl/ViewControlPanel/OrthoViewSelectList" to="." method="_on_OrthoViewSelectList_item_selected"]
+[connection signal="toggled" from="ViewportContainer/Viewport/ViewControl/ViewControlPanel/ColoursSlider" to="." method="_on_ColoursSlider_toggled"]
+[connection signal="button_down" from="ViewportContainer/Viewport/InstructionsPopup/PopupCloseButton" to="ViewportContainer/Viewport/InstructionsPopup" method="_on_PopupCloseButton_button_down"]

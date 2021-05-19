@@ -1,0 +1,552 @@
+[gd_scene load_steps=26 format=2]
+
+[ext_resource path="res://Assets/ObjectMaterial.tres" type="Material" id=1]
+[ext_resource path="res://Assets/Object5.obj" type="ArrayMesh" id=2]
+[ext_resource path="res://Assets/Object6.obj" type="ArrayMesh" id=3]
+[ext_resource path="res://Assets/Object8.obj" type="ArrayMesh" id=4]
+[ext_resource path="res://Assets/Object1.obj" type="ArrayMesh" id=5]
+[ext_resource path="res://Assets/PanelStyle.tres" type="StyleBox" id=6]
+[ext_resource path="res://Assets/Object3.obj" type="ArrayMesh" id=7]
+[ext_resource path="res://Assets/Object7.obj" type="ArrayMesh" id=8]
+[ext_resource path="res://Assets/Object2.obj" type="ArrayMesh" id=9]
+[ext_resource path="res://Assets/Object4.obj" type="ArrayMesh" id=10]
+[ext_resource path="res://Scripts/Projections.cs" type="Script" id=11]
+[ext_resource path="res://Scenes/PlaneControl.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Scenes/CameraControlsText.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Scenes/ProjectionRoot.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Scenes/SceneControls.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Scripts/InstructionsPopup.cs" type="Script" id=17]
+[ext_resource path="res://Scripts/CameraRoot.cs" type="Script" id=19]
+
+[sub_resource type="ConcavePolygonShape" id=1]
+margin = 0.001
+data = PoolVector3Array( -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5 )
+
+[sub_resource type="ConcavePolygonShape" id=2]
+margin = 0.001
+data = PoolVector3Array( -0.5, 0.1667, 0.5, 0.5, 0.1667, 0.5, 0.5, -0.5, 0.5, -0.5, 0.1667, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.1667, 0.5, 0.5, 0.1667, -0.5, 0.5, -0.5, -0.5, 0.5, 0.1667, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.1667, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.1667, -0.5, 0.5, -0.5, -0.5, 0, 0.1667, -0.5, 0.5, -0.5, -0.5, 0.5, 0.1667, -0.5, 0.3333, 0.1667, -0.5, 0.5, -0.5, -0.5, 0.3333, 0.1667, -0.5, 0, 0.1667, -0.5, 0, 0.1667, -0.5, 0.3333, 0.1667, -0.5, 0.3333, 0.5, -0.5, 0, 0.1667, -0.5, 0.3333, 0.5, -0.5, 0, 0.5, -0.5, -0.5, 0.1667, -0.5, -0.5, 0.1667, 0.5, -0.5, -0.5, 0.5, -0.5, 0.1667, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.1667, -0.5, 0, 0.1667, -0.5, 0, 0.1667, 0, -0.5, 0.1667, -0.5, 0, 0.1667, 0, -0.5, 0.1667, 0.5, -0.5, 0.1667, 0.5, 0, 0.1667, 0, 0.3333, 0.1667, 0, -0.5, 0.1667, 0.5, 0.3333, 0.1667, 0, 0.5, 0.1667, 0.5, 0.5, 0.1667, 0.5, 0.3333, 0.1667, 0, 0.3333, 0.1667, -0.5, 0.5, 0.1667, 0.5, 0.3333, 0.1667, -0.5, 0.5, 0.1667, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, 0, 0.5, 0, 0.3333, 0.5, 0, 0.3333, 0.1667, 0, 0, 0.5, 0, 0.3333, 0.1667, 0, 0, 0.1667, 0, 0.3333, 0.5, 0, 0.3333, 0.5, -0.5, 0.3333, 0.1667, -0.5, 0.3333, 0.5, 0, 0.3333, 0.1667, -0.5, 0.3333, 0.1667, 0, 0, 0.5, -0.5, 0, 0.5, 0, 0, 0.1667, 0, 0, 0.5, -0.5, 0, 0.1667, 0, 0, 0.1667, -0.5, 0, 0.5, -0.5, 0.3333, 0.5, -0.5, 0.3333, 0.5, 0, 0, 0.5, -0.5, 0.3333, 0.5, 0, 0, 0.5, 0 )
+
+[sub_resource type="ConcavePolygonShape" id=3]
+margin = 0.001
+data = PoolVector3Array( 0, 0.625, -0.0833, -0.25, 0.625, -0.0833, -0.25, 0.625, 0.4167, 0, 0.625, -0.0833, -0.25, 0.625, 0.4167, 0, 0.625, 0.4167, 0, 0.125, -0.0833, -0.25, 0.125, -0.0833, -0.25, 0.625, -0.0833, 0, 0.125, -0.0833, -0.25, 0.625, -0.0833, 0, 0.625, -0.0833, 0.5, 0.125, 0.3333, 0, 0.125, -0.0833, 0, 0.125, -0.3333, 0.5, 0.125, 0.3333, 0, 0.125, -0.3333, 0.5, 0.125, -0.6667, 0.5, 0.125, -0.6667, 0, 0.125, -0.3333, -0.25, 0.125, -0.3333, 0.5, 0.125, -0.6667, -0.25, 0.125, -0.3333, -0.5, 0.125, -0.6667, -0.5, 0.125, -0.6667, -0.25, 0.125, -0.3333, -0.25, 0.125, -0.0833, -0.5, 0.125, -0.6667, -0.25, 0.125, -0.0833, -0.5, 0.125, 0.3333, -0.5, 0.125, 0.3333, -0.25, 0.125, -0.0833, 0, 0.125, -0.0833, -0.5, 0.125, 0.3333, 0, 0.125, -0.0833, 0.5, 0.125, 0.3333, -0.5, 0.125, -0.6667, -0.5, 0.125, 0.3333, -0.5, -0.875, 0.3333, -0.5, 0.125, -0.6667, -0.5, -0.875, 0.3333, -0.5, -0.875, -0.6667, -0.5, 0.125, 0.3333, 0.5, 0.125, 0.3333, 0.5, -0.875, 0.3333, -0.5, 0.125, 0.3333, 0.5, -0.875, 0.3333, -0.5, -0.875, 0.3333, 0.5, 0.125, 0.3333, 0.5, 0.125, -0.6667, 0.5, -0.875, -0.6667, 0.5, 0.125, 0.3333, 0.5, -0.875, -0.6667, 0.5, -0.875, 0.3333, 0.5, 0.125, -0.6667, -0.5, 0.125, -0.6667, -0.5, -0.875, -0.6667, 0.5, 0.125, -0.6667, -0.5, -0.875, -0.6667, 0.5, -0.875, -0.6667, 0.5, -0.875, 0.3333, 0.5, -0.875, -0.6667, -0.5, -0.875, -0.6667, 0.5, -0.875, 0.3333, -0.5, -0.875, -0.6667, -0.5, -0.875, 0.3333, -0.25, -0.375, 0.6667, -0.25, -0.375, 0.4167, -0.25, 0.625, 0.4167, -0.25, -0.375, 0.6667, -0.25, 0.625, 0.4167, -0.25, 0.875, 0.6667, -0.25, 0.875, 0.6667, -0.25, 0.625, 0.4167, -0.25, 0.625, -0.0833, -0.25, 0.875, 0.6667, -0.25, 0.625, -0.0833, -0.25, 0.875, -0.3333, -0.25, 0.875, -0.3333, -0.25, 0.625, -0.0833, -0.25, 0.125, -0.0833, -0.25, 0.875, -0.3333, -0.25, 0.125, -0.0833, -0.25, 0.125, -0.3333, 0, 0.125, -0.3333, 0, 0.125, -0.0833, 0, 0.625, -0.0833, 0, 0.125, -0.3333, 0, 0.625, -0.0833, 0, 0.875, -0.3333, 0, 0.875, -0.3333, 0, 0.625, -0.0833, 0, 0.625, 0.4167, 0, 0.875, -0.3333, 0, 0.625, 0.4167, 0, 0.875, 0.6667, 0, 0.875, 0.6667, 0, 0.625, 0.4167, 0, -0.375, 0.4167, 0, 0.875, 0.6667, 0, -0.375, 0.4167, 0, -0.375, 0.6667, 0, 0.875, -0.3333, -0.25, 0.875, -0.3333, -0.25, 0.125, -0.3333, 0, 0.875, -0.3333, -0.25, 0.125, -0.3333, 0, 0.125, -0.3333, 0, 0.875, -0.3333, 0, 0.875, 0.6667, -0.25, 0.875, 0.6667, 0, 0.875, -0.3333, -0.25, 0.875, 0.6667, -0.25, 0.875, -0.3333, 0, 0.875, 0.6667, 0, -0.375, 0.6667, -0.25, -0.375, 0.6667, 0, 0.875, 0.6667, -0.25, -0.375, 0.6667, -0.25, 0.875, 0.6667, -0.25, -0.375, 0.4167, 0, -0.375, 0.4167, 0, 0.625, 0.4167, -0.25, -0.375, 0.4167, 0, 0.625, 0.4167, -0.25, 0.625, 0.4167, 0, -0.375, 0.6667, 0, -0.375, 0.4167, -0.25, -0.375, 0.4167, 0, -0.375, 0.6667, -0.25, -0.375, 0.4167, -0.25, -0.375, 0.6667 )
+
+[sub_resource type="ConcavePolygonShape" id=4]
+margin = 0.001
+data = PoolVector3Array( 0, 0.5, -0.5, -0.5, 0, -0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0, 0.5, 0.5, 0.5, 0, 0.5, -0.5, 0, 0.5, -0.5, 0, 0.5, 0.5, 0, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0, 0.5, -0.5, 0, 0.5, -0.5, -0.5, 0.5, -0.5, 0, -0.5, -0.5, 0, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0, -0.5, 0, 0.5, -0.5, -0.5, 0, 0.5, -0.5, 0, 0.5, 0, 0.5, -0.5, 0, 0.5, 0.5, 0.5, 0, 0.5, 0, 0.5, 0.5, 0.5, 0.5, -0.5, 0, 0.5, -0.5, 0.5, 0.5, -0.5, 0, 0.5, 0.5 )
+
+[sub_resource type="ConcavePolygonShape" id=5]
+margin = 0.001
+data = PoolVector3Array( -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.25, 0.5, -0.3333, -0.25, 0.5, 0.3333, -0.5, 0.5, -0.5, -0.25, 0.5, 0.3333, -0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.25, 0.5, 0.3333, 0.25, 0.5, 0.3333, -0.5, 0.5, 0.5, 0.25, 0.5, 0.3333, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.25, 0.5, 0.3333, -0.25, 0.5, -0.3333, 0.5, 0.5, 0.5, -0.25, 0.5, -0.3333, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.25, 0.5, -0.3333, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.25, -0.5, -0.3333, -0.5, -0.5, -0.5, -0.25, -0.5, -0.3333, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.25, -0.5, -0.3333, 0.25, -0.5, 0.3333, 0.5, -0.5, -0.5, 0.25, -0.5, 0.3333, 0.5, -0.5, 0.5, 0.5, -0.5, 0.5, 0.25, -0.5, 0.3333, -0.25, -0.5, 0.3333, 0.5, -0.5, 0.5, -0.25, -0.5, 0.3333, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.25, -0.5, 0.3333, -0.25, -0.5, -0.3333, -0.25, 0.5, 0.3333, -0.25, 0.5, -0.3333, -0.25, -0.5, -0.3333, -0.25, 0.5, 0.3333, -0.25, -0.5, -0.3333, -0.25, -0.5, 0.3333, -0.25, 0.5, -0.3333, 0.25, 0.5, 0.3333, 0.25, -0.5, 0.3333, -0.25, 0.5, -0.3333, 0.25, -0.5, 0.3333, -0.25, -0.5, -0.3333, 0.25, 0.5, 0.3333, -0.25, 0.5, 0.3333, -0.25, -0.5, 0.3333, 0.25, 0.5, 0.3333, -0.25, -0.5, 0.3333, 0.25, -0.5, 0.3333 )
+
+[sub_resource type="ConcavePolygonShape" id=6]
+margin = 0.001
+data = PoolVector3Array( -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.3333, 0.5, -0.25, -0.3333, 0.5, -0.25, 0.5, 0.5, -0.5, -0.3333, 0.5, -0.25, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.3333, 0.5, -0.25, -0.3333, 0.5, 0.25, -0.5, 0.5, -0.5, -0.3333, 0.5, 0.25, -0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.3333, 0.5, 0.25, 0.3333, 0.5, 0.25, -0.5, 0.5, 0.5, 0.3333, 0.5, 0.25, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.3333, 0.5, 0.25, 0.3333, 0.5, -0.25, 0.5, 0.5, 0.5, 0.3333, 0.5, -0.25, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.3333, 0, -0.25, -0.3333, 0, 0.25, -0.3333, 0.5, 0.25, -0.3333, 0, -0.25, -0.3333, 0.5, 0.25, -0.3333, 0.5, -0.25, 0.3333, 0, -0.25, -0.3333, 0, -0.25, -0.3333, 0.5, -0.25, 0.3333, 0, -0.25, -0.3333, 0.5, -0.25, 0.3333, 0.5, -0.25, 0.3333, 0, 0.25, 0.3333, 0, -0.25, 0.3333, 0.5, -0.25, 0.3333, 0, 0.25, 0.3333, 0.5, -0.25, 0.3333, 0.5, 0.25, -0.3333, 0, 0.25, 0.3333, 0, 0.25, 0.3333, 0.5, 0.25, -0.3333, 0, 0.25, 0.3333, 0.5, 0.25, -0.3333, 0.5, 0.25, 0.3333, 0, -0.25, 0.3333, 0, 0.25, -0.3333, 0, 0.25, 0.3333, 0, -0.25, -0.3333, 0, 0.25, -0.3333, 0, -0.25 )
+
+[sub_resource type="ConcavePolygonShape" id=7]
+margin = 0.001
+data = PoolVector3Array( 0.0001, -0.4081, -0.4329, -0.4999, -0.4081, 0.4331, 0.5001, -0.4081, 0.4331, 0.0001, -0.4081, -0.4329, 0.5001, -0.4081, 0.4331, 0.0001, -0.1081, -0.2208, 0.1501, -0.1081, 0.039, 0.0001, -0.1081, -0.2208, 0.5001, -0.4081, 0.4331, 0.1501, -0.1081, 0.039, 0.5001, -0.4081, 0.4331, 0.1501, 0.0419, 0.1451, 0.1501, 0.0419, 0.1451, 0.5001, -0.4081, 0.4331, 0.0001, 0.4083, 0.1444, 0.1501, 0.0419, 0.1451, 0.0001, 0.4083, 0.1444, 0.0001, 0.0419, -0.1147, -0.1499, -0.1081, 0.327, 0.1501, -0.1081, 0.327, -0.4999, -0.4081, 0.4331, -0.1499, -0.1081, 0.327, -0.4999, -0.4081, 0.4331, -0.1499, 0.0419, 0.274, -0.1499, 0.0419, 0.274, -0.4999, -0.4081, 0.4331, 0.0001, 0.4083, 0.1444, -0.1499, 0.0419, 0.274, 0.0001, 0.4083, 0.1444, 0.1501, 0.0419, 0.274, 0.1501, 0.0419, 0.274, 0.0001, 0.4083, 0.1444, 0.5001, -0.4081, 0.4331, 0.1501, 0.0419, 0.274, 0.5001, -0.4081, 0.4331, 0.1501, -0.1081, 0.327, 0.1501, -0.1081, 0.327, 0.5001, -0.4081, 0.4331, -0.4999, -0.4081, 0.4331, 0.0001, -0.4081, -0.4329, 0.0001, -0.1081, -0.2208, -0.1499, -0.1081, 0.039, 0.0001, -0.4081, -0.4329, -0.1499, -0.1081, 0.039, -0.4999, -0.4081, 0.4331, -0.4999, -0.4081, 0.4331, -0.1499, -0.1081, 0.039, -0.1499, 0.0419, 0.1451, -0.4999, -0.4081, 0.4331, -0.1499, 0.0419, 0.1451, 0.0001, 0.4083, 0.1444, 0.0001, 0.4083, 0.1444, -0.1499, 0.0419, 0.1451, 0.0001, 0.0419, -0.1147, 0.1501, 0.0419, 0.1451, 0.1501, 0.0419, 0.274, 0.1501, -0.1081, 0.327, 0.1501, 0.0419, 0.1451, 0.1501, -0.1081, 0.327, 0.1501, -0.1081, 0.039, -0.1499, 0.0419, 0.274, -0.1499, 0.0419, 0.1451, -0.1499, -0.1081, 0.039, -0.1499, 0.0419, 0.274, -0.1499, -0.1081, 0.039, -0.1499, -0.1081, 0.327, 0.0001, 0.0419, -0.1147, -0.1499, 0.0419, 0.1451, -0.1499, 0.0419, 0.274, 0.0001, 0.0419, -0.1147, -0.1499, 0.0419, 0.274, 0.1501, 0.0419, 0.1451, 0.1501, 0.0419, 0.1451, -0.1499, 0.0419, 0.274, 0.1501, 0.0419, 0.274, -0.1499, -0.1081, 0.039, 0.0001, -0.1081, -0.2208, 0.1501, -0.1081, 0.039, -0.1499, -0.1081, 0.039, 0.1501, -0.1081, 0.039, -0.1499, -0.1081, 0.327, -0.1499, -0.1081, 0.327, 0.1501, -0.1081, 0.039, 0.1501, -0.1081, 0.327 )
+
+[sub_resource type="ConcavePolygonShape" id=8]
+margin = 0.001
+data = PoolVector3Array( 0, 0.5, -0.5, 0.5, 0, -0.5, 0.0877, 0.4123, 0, 0, 0.5, -0.5, 0.0877, 0.4123, 0, 0, 0.5, 0.5, 0, 0.5, 0.5, 0.0877, 0.4123, 0, 0.3939, 0.1061, 0.25, 0, 0.5, 0.5, 0.3939, 0.1061, 0.25, 0.5, 0, 0.5, 0.5, 0, 0.5, 0.3939, 0.1061, 0.25, 0.3939, 0.1061, -0.25, 0.5, 0, 0.5, 0.3939, 0.1061, -0.25, 0.5, 0, -0.5, 0.5, 0, -0.5, 0.3939, 0.1061, -0.25, 0.0877, 0.4123, 0, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0, 0.5, 0.5, 0, -0.5, 0.5, -0.5, 0.5, 0.5, 0, -0.5, 0.5, -0.5, -0.5, 0, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0, 0.5, 0.5, -0.5, 0.5, -0.5, 0, 0.5, -0.5, -0.5, 0.5, 0.5, 0, 0.5, 0.5, 0.5, 0, 0.5, -0.5, 0.5, 0.5, 0.5, 0, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0, -0.5, 0, 0.5, -0.5, 0.5, -0.5, -0.5, 0, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, 0, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5354, 0.2475, -0.25, 0.2292, 0.5537, 0, 0.0877, 0.4123, 0, 0.5354, 0.2475, -0.25, 0.0877, 0.4123, 0, 0.3939, 0.1061, -0.25, 0.2292, 0.5537, 0, 0.5354, 0.2475, 0.25, 0.3939, 0.1061, 0.25, 0.2292, 0.5537, 0, 0.3939, 0.1061, 0.25, 0.0877, 0.4123, 0, 0.5354, 0.2475, 0.25, 0.5354, 0.2475, -0.25, 0.3939, 0.1061, -0.25, 0.5354, 0.2475, 0.25, 0.3939, 0.1061, -0.25, 0.3939, 0.1061, 0.25, 0.5354, 0.2475, 0.25, 0.2292, 0.5537, 0, 0.5354, 0.2475, -0.25 )
+
+[node name="Projections" type="Node"]
+script = ExtResource( 11 )
+
+[node name="HorizontalViewContainer" type="HBoxContainer" parent="."]
+margin_right = 1366.0
+margin_bottom = 705.0
+custom_constants/separation = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ObjectViewContainter" type="ViewportContainer" parent="HorizontalViewContainer"]
+margin_right = 681.0
+margin_bottom = 705.0
+size_flags_horizontal = 3
+stretch = true
+
+[node name="ObjectViewport" type="Viewport" parent="HorizontalViewContainer/ObjectViewContainter"]
+size = Vector2( 681, 705 )
+handle_input_locally = false
+render_target_update_mode = 3
+
+[node name="ObjectRoot" type="Spatial" parent="HorizontalViewContainer/ObjectViewContainter/ObjectViewport"]
+
+[node name="DirectionalLight" type="DirectionalLight" parent="HorizontalViewContainer/ObjectViewContainter/ObjectViewport/ObjectRoot"]
+transform = Transform( -0.707107, -0.407599, 0.577809, 0, 0.817145, 0.576432, -0.707107, 0.407599, -0.577809, -6, 6, 6 )
+light_energy = 0.5
+
+[node name="OmniLight" type="OmniLight" parent="HorizontalViewContainer/ObjectViewContainter/ObjectViewport/ObjectRoot"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -2, 2 )
+
+[node name="CameraRoot" type="Spatial" parent="HorizontalViewContainer/ObjectViewContainter/ObjectViewport/ObjectRoot"]
+transform = Transform( -0.707107, -0.407599, 0.577809, 0, 0.817145, 0.576432, -0.707107, 0.407599, -0.577809, 0, 0, 0 )
+script = ExtResource( 19 )
+
+[node name="UserCamera" type="Camera" parent="HorizontalViewContainer/ObjectViewContainter/ObjectViewport/ObjectRoot/CameraRoot"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7 )
+projection = 1
+current = true
+size = 10.0
+
+[node name="Object1" type="StaticBody" parent="HorizontalViewContainer/ObjectViewContainter/ObjectViewport/ObjectRoot"]
+visible = false
+
+[node name="ObjectMesh" type="MeshInstance" parent="HorizontalViewContainer/ObjectViewContainter/ObjectViewport/ObjectRoot/Object1"]
+mesh = ExtResource( 5 )
+material/0 = ExtResource( 1 )
+
+[node name="ObjectCollision" type="CollisionShape" parent="HorizontalViewContainer/ObjectViewContainter/ObjectViewport/ObjectRoot/Object1"]
+shape = SubResource( 1 )
+disabled = true
+
+[node name="Object2" type="StaticBody" parent="HorizontalViewContainer/ObjectViewContainter/ObjectViewport/ObjectRoot"]
+
+[node name="ObjectMesh" type="MeshInstance" parent="HorizontalViewContainer/ObjectViewContainter/ObjectViewport/ObjectRoot/Object2"]
+mesh = ExtResource( 9 )
+material/0 = ExtResource( 1 )
+
+[node name="ObjectCollision" type="CollisionShape" parent="HorizontalViewContainer/ObjectViewContainter/ObjectViewport/ObjectRoot/Object2"]
+shape = SubResource( 2 )
+
+[node name="Object3" type="StaticBody" parent="HorizontalViewContainer/ObjectViewContainter/ObjectViewport/ObjectRoot"]
+visible = false
+
+[node name="ObjectMesh" type="MeshInstance" parent="HorizontalViewContainer/ObjectViewContainter/ObjectViewport/ObjectRoot/Object3"]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 0, 0, 0 )
+mesh = ExtResource( 7 )
+material/0 = ExtResource( 1 )
+
+[node name="ObjectCollision" type="CollisionShape" parent="HorizontalViewContainer/ObjectViewContainter/ObjectViewport/ObjectRoot/Object3"]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 0, 0, 0 )
+shape = SubResource( 3 )
+disabled = true
+
+[node name="Object4" type="StaticBody" parent="HorizontalViewContainer/ObjectViewContainter/ObjectViewport/ObjectRoot"]
+visible = false
+
+[node name="ObjectMesh" type="MeshInstance" parent="HorizontalViewContainer/ObjectViewContainter/ObjectViewport/ObjectRoot/Object4"]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 0, 0, 0 )
+mesh = ExtResource( 10 )
+material/0 = ExtResource( 1 )
+
+[node name="ObjectCollision" type="CollisionShape" parent="HorizontalViewContainer/ObjectViewContainter/ObjectViewport/ObjectRoot/Object4"]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 0, 0, 0 )
+shape = SubResource( 4 )
+disabled = true
+
+[node name="Object5" type="StaticBody" parent="HorizontalViewContainer/ObjectViewContainter/ObjectViewport/ObjectRoot"]
+visible = false
+
+[node name="ObjectMesh" type="MeshInstance" parent="HorizontalViewContainer/ObjectViewContainter/ObjectViewport/ObjectRoot/Object5"]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 0, 0, 0 )
+mesh = ExtResource( 2 )
+material/0 = ExtResource( 1 )
+
+[node name="ObjectCollision" type="CollisionShape" parent="HorizontalViewContainer/ObjectViewContainter/ObjectViewport/ObjectRoot/Object5"]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 0, 0, 0 )
+shape = SubResource( 5 )
+disabled = true
+
+[node name="Object6" type="StaticBody" parent="HorizontalViewContainer/ObjectViewContainter/ObjectViewport/ObjectRoot"]
+visible = false
+
+[node name="ObjectMesh" type="MeshInstance" parent="HorizontalViewContainer/ObjectViewContainter/ObjectViewport/ObjectRoot/Object6"]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 0, 0, 0 )
+mesh = ExtResource( 3 )
+material/0 = ExtResource( 1 )
+
+[node name="ObjectCollision" type="CollisionShape" parent="HorizontalViewContainer/ObjectViewContainter/ObjectViewport/ObjectRoot/Object6"]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 0, 0, 0 )
+shape = SubResource( 6 )
+disabled = true
+
+[node name="Object7" type="StaticBody" parent="HorizontalViewContainer/ObjectViewContainter/ObjectViewport/ObjectRoot"]
+visible = false
+
+[node name="ObjectMesh" type="MeshInstance" parent="HorizontalViewContainer/ObjectViewContainter/ObjectViewport/ObjectRoot/Object7"]
+transform = Transform( -2.44381e-07, 0, 1.5, 0, 1.5, 0, -1.5, 0, -2.44381e-07, -0.001, 0, 0 )
+mesh = ExtResource( 8 )
+material/0 = ExtResource( 1 )
+
+[node name="ObjectCollision" type="CollisionShape" parent="HorizontalViewContainer/ObjectViewContainter/ObjectViewport/ObjectRoot/Object7"]
+transform = Transform( -2.44381e-07, 0, 1.5, 0, 1.5, 0, -1.5, 0, -2.44381e-07, -0.001, 0, 0 )
+shape = SubResource( 7 )
+disabled = true
+
+[node name="Object8" type="StaticBody" parent="HorizontalViewContainer/ObjectViewContainter/ObjectViewport/ObjectRoot"]
+visible = false
+
+[node name="ObjectMesh" type="MeshInstance" parent="HorizontalViewContainer/ObjectViewContainter/ObjectViewport/ObjectRoot/Object8"]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 0, 0, 0 )
+mesh = ExtResource( 4 )
+material/0 = ExtResource( 1 )
+
+[node name="CollisionShape" type="CollisionShape" parent="HorizontalViewContainer/ObjectViewContainter/ObjectViewport/ObjectRoot/Object8"]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 0, 0, 0 )
+shape = SubResource( 8 )
+disabled = true
+
+[node name="TopViewPlane" parent="HorizontalViewContainer/ObjectViewContainter/ObjectViewport/ObjectRoot" instance=ExtResource( 12 )]
+transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, 0, 0, 0 )
+
+[node name="FrontViewPlane" parent="HorizontalViewContainer/ObjectViewContainter/ObjectViewport/ObjectRoot" instance=ExtResource( 12 )]
+
+[node name="RightViewPlane" parent="HorizontalViewContainer/ObjectViewContainter/ObjectViewport/ObjectRoot" instance=ExtResource( 12 )]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 0, 0, 0 )
+
+[node name="AuxiliaryViewPlane" parent="HorizontalViewContainer/ObjectViewContainter/ObjectViewport/ObjectRoot" instance=ExtResource( 12 )]
+transform = Transform( -1.15202e-07, 1.15202e-07, 1, 0.707107, 0.707107, 0, -0.707107, 0.707107, -1.62921e-07, 0, 0, 0 )
+
+[node name="HiddenLineRayCast" type="RayCast" parent="HorizontalViewContainer/ObjectViewContainter/ObjectViewport/ObjectRoot"]
+enabled = true
+exclude_parent = false
+
+[node name="Controls" type="Control" parent="HorizontalViewContainer/ObjectViewContainter/ObjectViewport"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="ControlsPanel" type="Panel" parent="HorizontalViewContainer/ObjectViewContainter/ObjectViewport/Controls"]
+margin_right = 681.0
+margin_bottom = 110.0
+custom_styles/panel = ExtResource( 6 )
+
+[node name="ObjectControl" type="Control" parent="HorizontalViewContainer/ObjectViewContainter/ObjectViewport/Controls/ControlsPanel"]
+margin_left = 350.0
+margin_top = 12.0
+margin_right = 390.0
+margin_bottom = 52.0
+
+[node name="ObjectControlLabel" type="Label" parent="HorizontalViewContainer/ObjectViewContainter/ObjectViewport/Controls/ControlsPanel/ObjectControl"]
+margin_left = 100.0
+margin_top = -9.53674e-07
+margin_right = 211.0
+margin_bottom = 14.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Object Control"
+uppercase = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HorizontalViewContainer/ObjectViewContainter/ObjectViewport/Controls/ControlsPanel/ObjectControl"]
+margin_top = 21.0
+margin_right = 316.0
+margin_bottom = 96.0
+custom_constants/separation = 20
+
+[node name="LabelsVBoxContainer" type="VBoxContainer" parent="HorizontalViewContainer/ObjectViewContainter/ObjectViewport/Controls/ControlsPanel/ObjectControl/HBoxContainer"]
+margin_right = 80.0
+margin_bottom = 75.0
+custom_constants/separation = 8
+
+[node name="ObjectXDegLabel" type="Label" parent="HorizontalViewContainer/ObjectViewContainter/ObjectViewport/Controls/ControlsPanel/ObjectControl/HBoxContainer/LabelsVBoxContainer"]
+margin_right = 80.0
+margin_bottom = 14.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "X Rotation"
+uppercase = true
+
+[node name="ObjectYDegLabel" type="Label" parent="HorizontalViewContainer/ObjectViewContainter/ObjectViewport/Controls/ControlsPanel/ObjectControl/HBoxContainer/LabelsVBoxContainer"]
+margin_top = 22.0
+margin_right = 80.0
+margin_bottom = 36.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Y Rotation"
+valign = 1
+uppercase = true
+
+[node name="ObjectZDegLabel" type="Label" parent="HorizontalViewContainer/ObjectViewContainter/ObjectViewport/Controls/ControlsPanel/ObjectControl/HBoxContainer/LabelsVBoxContainer"]
+margin_top = 44.0
+margin_right = 80.0
+margin_bottom = 58.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Z Rotation"
+valign = 1
+uppercase = true
+
+[node name="SlidersVBoxContainer" type="VBoxContainer" parent="HorizontalViewContainer/ObjectViewContainter/ObjectViewport/Controls/ControlsPanel/ObjectControl/HBoxContainer"]
+margin_left = 100.0
+margin_right = 316.0
+margin_bottom = 75.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 6
+
+[node name="ObjectXDegSlider" type="HSlider" parent="HorizontalViewContainer/ObjectViewContainter/ObjectViewport/Controls/ControlsPanel/ObjectControl/HBoxContainer/SlidersVBoxContainer"]
+margin_right = 216.0
+margin_bottom = 16.0
+max_value = 360.0
+step = 5.0
+
+[node name="ObjectYDegSlider" type="HSlider" parent="HorizontalViewContainer/ObjectViewContainter/ObjectViewport/Controls/ControlsPanel/ObjectControl/HBoxContainer/SlidersVBoxContainer"]
+margin_top = 22.0
+margin_right = 216.0
+margin_bottom = 38.0
+max_value = 360.0
+step = 5.0
+
+[node name="ObjectZDegSlider" type="HSlider" parent="HorizontalViewContainer/ObjectViewContainter/ObjectViewport/Controls/ControlsPanel/ObjectControl/HBoxContainer/SlidersVBoxContainer"]
+margin_top = 44.0
+margin_right = 216.0
+margin_bottom = 60.0
+max_value = 360.0
+step = 5.0
+
+[node name="ViewControl" type="Control" parent="HorizontalViewContainer/ObjectViewContainter/ObjectViewport/Controls/ControlsPanel"]
+margin_left = 15.0
+margin_top = 12.0
+margin_right = 55.0
+margin_bottom = 52.0
+
+[node name="ViewControlLabel" type="Label" parent="HorizontalViewContainer/ObjectViewContainter/ObjectViewport/Controls/ControlsPanel/ViewControl"]
+margin_left = 110.0
+margin_right = 217.0
+margin_bottom = 14.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "View Control"
+uppercase = true
+
+[node name="FocusZoomLabel" type="Label" parent="HorizontalViewContainer/ObjectViewContainter/ObjectViewport/Controls/ControlsPanel/ViewControl"]
+margin_top = 20.0
+margin_right = 108.0
+margin_bottom = 34.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Focus/Zoom"
+uppercase = true
+
+[node name="FocusZoomSlider" type="HSlider" parent="HorizontalViewContainer/ObjectViewContainter/ObjectViewport/Controls/ControlsPanel/ViewControl"]
+margin_left = 100.0
+margin_top = 18.0
+margin_right = 316.0
+margin_bottom = 34.0
+min_value = 0.5
+max_value = 3.0
+step = 0.1
+value = 1.0
+
+[node name="PerspectiveLabel" type="Label" parent="HorizontalViewContainer/ObjectViewContainter/ObjectViewport/Controls/ControlsPanel/ViewControl"]
+margin_top = 43.0
+margin_right = 124.0
+margin_bottom = 74.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Perspective Mode"
+uppercase = true
+
+[node name="PerspectiveCheckBox" type="CheckBox" parent="HorizontalViewContainer/ObjectViewContainter/ObjectViewport/Controls/ControlsPanel/ViewControl"]
+margin_left = 140.0
+margin_top = 37.0
+margin_right = 164.0
+margin_bottom = 61.0
+
+[node name="ViewSelectLabel" type="Label" parent="HorizontalViewContainer/ObjectViewContainter/ObjectViewport/Controls/ControlsPanel/ViewControl"]
+margin_top = 67.0
+margin_right = 48.0
+margin_bottom = 81.0
+text = "View(s)"
+uppercase = true
+
+[node name="ViewSelectList" type="OptionButton" parent="HorizontalViewContainer/ObjectViewContainter/ObjectViewport/Controls/ControlsPanel/ViewControl"]
+margin_left = 60.0
+margin_top = 65.0
+margin_right = 210.0
+margin_bottom = 85.0
+text = "All Views"
+items = [ "All Views", null, false, 0, null, "Top View", null, false, 1, null, "Front View", null, false, 2, null, "Side View", null, false, 3, null, "Auxiliary View", null, true, 4, null ]
+selected = 0
+
+[node name="ResetButton" type="Button" parent="HorizontalViewContainer/ObjectViewContainter/ObjectViewport/Controls/ControlsPanel/ViewControl"]
+margin_left = 250.0
+margin_top = 65.0
+margin_right = 298.0
+margin_bottom = 85.0
+text = "Reset"
+
+[node name="SceneControls" parent="HorizontalViewContainer/ObjectViewContainter/ObjectViewport/Controls" instance=ExtResource( 16 )]
+margin_top = 645.0
+margin_right = 447.8
+margin_bottom = 682.84
+
+[node name="SceneControls2" type="Panel" parent="HorizontalViewContainer/ObjectViewContainter/ObjectViewport/Controls"]
+margin_top = 110.0
+margin_right = 200.0
+margin_bottom = 190.0
+custom_styles/panel = ExtResource( 6 )
+
+[node name="ObjectLabel" type="Label" parent="HorizontalViewContainer/ObjectViewContainter/ObjectViewport/Controls/SceneControls2"]
+margin_left = 15.0
+margin_top = 13.0
+margin_right = 60.0
+margin_bottom = 27.0
+text = "Object"
+uppercase = true
+
+[node name="ObjectList" type="OptionButton" parent="HorizontalViewContainer/ObjectViewContainter/ObjectViewport/Controls/SceneControls2"]
+margin_left = 75.0
+margin_top = 10.0
+margin_right = 175.0
+margin_bottom = 30.0
+text = "Object 2"
+items = [ "Object 1", null, false, 0, null, "Object 2", null, false, 1, null, "Object 3", null, false, 2, null, "Object 4", null, false, 3, null, "Object 5", null, false, 4, null, "Object 6", null, false, 5, null, "Object 7", null, false, 6, null, "Object 8", null, false, 7, null ]
+selected = 1
+
+[node name="ColoursToggleSlider" type="CheckButton" parent="HorizontalViewContainer/ObjectViewContainter/ObjectViewport/Controls/SceneControls2"]
+margin_left = 10.0
+margin_top = 40.0
+margin_right = 188.0
+margin_bottom = 80.0
+text = "HIGH CONTRAST"
+
+[node name="CameraControlsText" parent="HorizontalViewContainer/ObjectViewContainter/ObjectViewport/Controls" instance=ExtResource( 13 )]
+margin_left = 480.0
+margin_top = 520.0
+margin_right = 480.0
+margin_bottom = 520.0
+
+[node name="ControlsDisplayControl" type="Control" parent="HorizontalViewContainer/ObjectViewContainter/ObjectViewport"]
+margin_left = 510.0
+margin_top = 665.0
+margin_right = 550.0
+margin_bottom = 705.0
+
+[node name="ShowControlLabel" type="Label" parent="HorizontalViewContainer/ObjectViewContainter/ObjectViewport/ControlsDisplayControl"]
+margin_top = 12.0
+margin_right = 90.0
+margin_bottom = 26.0
+text = "Show Controls"
+
+[node name="ShowControlsButton" type="CheckButton" parent="HorizontalViewContainer/ObjectViewContainter/ObjectViewport/ControlsDisplayControl"]
+margin_left = 90.0
+margin_right = 166.0
+margin_bottom = 40.0
+pressed = true
+
+[node name="MainProjectionDisplayContainer" type="ViewportContainer" parent="HorizontalViewContainer"]
+margin_left = 685.0
+margin_right = 1366.0
+margin_bottom = 705.0
+size_flags_horizontal = 3
+stretch = true
+
+[node name="MainProjectionViewport" type="Viewport" parent="HorizontalViewContainer/MainProjectionDisplayContainer"]
+size = Vector2( 681, 705 )
+handle_input_locally = false
+usage = 0
+render_target_update_mode = 3
+
+[node name="ProjectionRoot" parent="HorizontalViewContainer/MainProjectionDisplayContainer/MainProjectionViewport" instance=ExtResource( 14 )]
+
+[node name="ViewGridContainer" type="GridContainer" parent="HorizontalViewContainer/MainProjectionDisplayContainer"]
+margin_right = 684.0
+margin_bottom = 708.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/vseparation = 3
+custom_constants/hseparation = 3
+columns = 2
+
+[node name="TopViewportContainer" type="ViewportContainer" parent="HorizontalViewContainer/MainProjectionDisplayContainer/ViewGridContainer"]
+margin_right = 340.0
+margin_bottom = 352.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TopViewport" type="Viewport" parent="HorizontalViewContainer/MainProjectionDisplayContainer/ViewGridContainer/TopViewportContainer"]
+size = Vector2( 340, 352 )
+handle_input_locally = false
+render_target_update_mode = 3
+
+[node name="TopViewRoot" parent="HorizontalViewContainer/MainProjectionDisplayContainer/ViewGridContainer/TopViewportContainer/TopViewport" instance=ExtResource( 14 )]
+
+[node name="AuxiliaryViewportContainer" type="ViewportContainer" parent="HorizontalViewContainer/MainProjectionDisplayContainer/ViewGridContainer"]
+margin_left = 343.0
+margin_right = 683.0
+margin_bottom = 352.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="AuxiliaryViewport" type="Viewport" parent="HorizontalViewContainer/MainProjectionDisplayContainer/ViewGridContainer/AuxiliaryViewportContainer"]
+size = Vector2( 340, 352 )
+handle_input_locally = false
+render_target_update_mode = 3
+
+[node name="AuxiliaryViewRoot" parent="HorizontalViewContainer/MainProjectionDisplayContainer/ViewGridContainer/AuxiliaryViewportContainer/AuxiliaryViewport" instance=ExtResource( 14 )]
+
+[node name="FrontViewportContainer" type="ViewportContainer" parent="HorizontalViewContainer/MainProjectionDisplayContainer/ViewGridContainer"]
+margin_top = 355.0
+margin_right = 340.0
+margin_bottom = 707.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="FrontViewport" type="Viewport" parent="HorizontalViewContainer/MainProjectionDisplayContainer/ViewGridContainer/FrontViewportContainer"]
+size = Vector2( 340, 352 )
+handle_input_locally = false
+render_target_update_mode = 3
+
+[node name="FrontViewRoot" parent="HorizontalViewContainer/MainProjectionDisplayContainer/ViewGridContainer/FrontViewportContainer/FrontViewport" instance=ExtResource( 14 )]
+
+[node name="SideViewportContainer" type="ViewportContainer" parent="HorizontalViewContainer/MainProjectionDisplayContainer/ViewGridContainer"]
+margin_left = 343.0
+margin_top = 355.0
+margin_right = 683.0
+margin_bottom = 707.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="SideViewport" type="Viewport" parent="HorizontalViewContainer/MainProjectionDisplayContainer/ViewGridContainer/SideViewportContainer"]
+size = Vector2( 340, 352 )
+handle_input_locally = false
+render_target_update_mode = 3
+
+[node name="SideViewRoot" parent="HorizontalViewContainer/MainProjectionDisplayContainer/ViewGridContainer/SideViewportContainer/SideViewport" instance=ExtResource( 14 )]
+
+[node name="ProjectionsInstructionsPopup" type="PopupDialog" parent="."]
+margin_right = 800.0
+margin_bottom = 305.0
+custom_styles/panel = ExtResource( 6 )
+popup_exclusive = true
+script = ExtResource( 17 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="InstructionsLabel" type="Label" parent="ProjectionsInstructionsPopup"]
+margin_left = 15.0
+margin_top = 15.0
+margin_right = 785.0
+margin_bottom = 138.0
+text = "Freeform Projections
+
+For this exercise, the left side shows a 3D view with \"projection planes\" surrounding an object.
+
+The projected views of the object onto these planes are on the right side. The top, front, and right side views are shown.
+
+The \"View Control\" section controls the projections' size and mode. You can see all views at once or isolate a view using the \"View(s)\" dropdown list.
+
+The \"Object Control\" section controls the rotation of the object with three sliders.
+
+There are 8 objects to choose from.
+
+Object 8 demonstrates a projection to create an auxiliary view. Note: the auxiliary view shown is not oriented correctly (i.e., in true position)."
+autowrap = true
+
+[node name="ProjectionsPopupCloseButton" type="Button" parent="ProjectionsInstructionsPopup"]
+margin_left = 680.0
+margin_top = 275.0
+margin_right = 724.0
+margin_bottom = 295.0
+text = "Okay"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="value_changed" from="HorizontalViewContainer/ObjectViewContainter/ObjectViewport/Controls/ControlsPanel/ObjectControl/HBoxContainer/SlidersVBoxContainer/ObjectXDegSlider" to="." method="ChangeDisplay"]
+[connection signal="value_changed" from="HorizontalViewContainer/ObjectViewContainter/ObjectViewport/Controls/ControlsPanel/ObjectControl/HBoxContainer/SlidersVBoxContainer/ObjectYDegSlider" to="." method="ChangeDisplay"]
+[connection signal="value_changed" from="HorizontalViewContainer/ObjectViewContainter/ObjectViewport/Controls/ControlsPanel/ObjectControl/HBoxContainer/SlidersVBoxContainer/ObjectZDegSlider" to="." method="ChangeDisplay"]
+[connection signal="value_changed" from="HorizontalViewContainer/ObjectViewContainter/ObjectViewport/Controls/ControlsPanel/ViewControl/FocusZoomSlider" to="." method="ChangeDisplay"]
+[connection signal="toggled" from="HorizontalViewContainer/ObjectViewContainter/ObjectViewport/Controls/ControlsPanel/ViewControl/PerspectiveCheckBox" to="." method="_on_PerspectiveCheckBox_toggled"]
+[connection signal="item_selected" from="HorizontalViewContainer/ObjectViewContainter/ObjectViewport/Controls/ControlsPanel/ViewControl/ViewSelectList" to="." method="_on_ViewSelectList_item_selected"]
+[connection signal="button_down" from="HorizontalViewContainer/ObjectViewContainter/ObjectViewport/Controls/ControlsPanel/ViewControl/ResetButton" to="." method="_on_ResetButton_button_down"]
+[connection signal="item_selected" from="HorizontalViewContainer/ObjectViewContainter/ObjectViewport/Controls/SceneControls2/ObjectList" to="." method="_on_ObjectList_item_selected"]
+[connection signal="toggled" from="HorizontalViewContainer/ObjectViewContainter/ObjectViewport/Controls/SceneControls2/ColoursToggleSlider" to="." method="_on_ColoursToggleSlider_toggled"]
+[connection signal="toggled" from="HorizontalViewContainer/ObjectViewContainter/ObjectViewport/ControlsDisplayControl/ShowControlsButton" to="." method="_on_ShowControlsButton_toggled"]
+[connection signal="button_down" from="ProjectionsInstructionsPopup/ProjectionsPopupCloseButton" to="ProjectionsInstructionsPopup" method="_on_PopupCloseButton_button_down"]
