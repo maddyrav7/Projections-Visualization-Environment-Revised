@@ -72,6 +72,9 @@ public class Projections : Node
     // The index of the selected object
     private static int currentObjectIndex;
 
+    // Bool storing whether a physics frame has passed
+    private static bool hasFramePassed = false;
+
     // Ready function, called once at the beginning of the scene when all children are ready
     public override void _Ready()
     {
@@ -321,8 +324,12 @@ public class Projections : Node
 
     // Function that is called when the selected object is changed
     // Connected to the "ObjectList" option button through the editor
+    // NOTE: BECAUSE OF THE WAY GODOT UPDATES COLLISION SHAPES, WHEN THE OBJECT IS FIRST CHANGED, A PHYSICS FRAME IS REQUIRED FOR THE COLLISION SHAPES TO UPDATE WHETHER THEY ARE ENABLED/DISABLED
+    // TO SOLVE THIS ISSUE, THIS FUNCTION WAS SPLIT IN TWO, THE FISRT PART CHANGING THE OBJECTS, AND THE SECOND PART DISPLAYING THE OBJECT AFTER A PHYSICS FRAME
     public void _on_ObjectList_item_selected(int index)
     {
+        // FIRST PART OF FUNCTION
+
         // Hide the previously selected object and disable its collision
         objectBody.Visible = false;
         objectBody.GetChild<CollisionShape>(1).Disabled = true;
@@ -361,6 +368,16 @@ public class Projections : Node
         objectBody.Visible = true;
         objectBody.GetChild<CollisionShape>(1).Disabled = false;
 
+        // Rotate the object so that it, and its collision object, can be updated in the next physics frame
+        objectBody.RotationDegrees = new Vector3((float)ObjectXDegSlider.Value, (float)ObjectYDegSlider.Value, (float)ObjectZDegSlider.Value);
+
+        // Set hasFramePassed to false to check when a physics frame passes, for the second part of the function
+        hasFramePassed = false;
+    }
+
+    // The second half of the _on_ObjectList_item_selected function
+    public void _on_ObjectList_item_selected_second_part()
+    {
         // Initialize the PlaneControl class to use the new object
         PlaneControl.Initialize(objectBody.GetChild<MeshInstance>(0), ray, PlaneControl.projectionMode);
 
@@ -368,6 +385,21 @@ public class Projections : Node
         // ChangeDisplay is used instead of Display so that the controls values are still used and the new object is not completely reset
         SetDisplay();
         ChangeDisplay();
+    }
+
+    // _PhysicsProcess is called after each physics frame and is used to determine whether a physics frame has passed, and executes the second part of _on_ObjectList_item_selected
+    public override void _PhysicsProcess(float delta)
+    {
+        // If a physics frame has passed, execute the second half of the _on_ObjectList_item_selected function
+        if (hasFramePassed)
+        {
+            _on_ObjectList_item_selected_second_part();
+        }
+        else
+        {
+            // If a physics frame has not passed yet, then it must have passed now
+            hasFramePassed = true;
+        }
     }
 
     // Function that is called when the "Switch Colours" slider is toggled
